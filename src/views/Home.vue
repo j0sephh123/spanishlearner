@@ -1,18 +1,49 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ul>
+      <li v-for="verb in filteredVerbs" :key="verb.id"
+      >{{verb.name}} -> {{verb.meaning}}<hr></li>
+    </ul>
+    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import {mapGetters, mapActions} from 'vuex'
+// start=10
+// limit=10
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
+  computed: {
+    ...mapGetters({
+      verbs: 'verbs/verbs'
+    }),
+    filteredVerbs(arg) {
+      return (
+        this.$store.getters['verbs/verbs'].filter(todo => 
+          todo.name.match(this.$store.getters['verbs/search'])
+        )
+      )
+    }
+    
+  },
+  mounted() {
+    //console.log(this.$store.getters['verbs/verbs'])
   }
 }
 </script>
+
+
+
+
+
+
+
