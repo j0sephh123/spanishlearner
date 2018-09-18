@@ -3,7 +3,7 @@
     <div class="control">
       <input 
         v-model="search"
-        class="input is-primary" 
+        class="input is-info" 
         type="text" 
         placeholder="Search">
     </div>

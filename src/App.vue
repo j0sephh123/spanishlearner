@@ -1,23 +1,21 @@
 <template>
   <div>
-    <div>
-      <search-bar></search-bar>
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import SearchVue from './components/Search.vue';
+
 
 export default {
-  components: {
-    searchBar: SearchVue
-  },
-  // mounted() {
-  //   console.log('a')
-  // } 
+
 }
 </script>
+
+<style>
+body {
+  background-color: #F8F9FA;
+}
+</style>
 
  
