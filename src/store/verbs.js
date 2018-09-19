@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+
 const verbs = {
   namespaced: true,
   state: {    
@@ -131,6 +134,10 @@ const verbs = {
   actions: {
     setFilter({commit}, filter) {
       commit('setFilter', filter);
+    },
+    async submit({commit}, data) {
+      const result = await axios.post('http://localhost:1337/verb', data);
+      console.log(result)
     }
   },
   getters: {

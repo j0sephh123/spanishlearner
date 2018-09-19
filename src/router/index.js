@@ -11,6 +11,11 @@ export default new Router({
       component: () => import('../views/Home.vue')
     },
     {
+      path: '/create',
+      name: 'create',
+      component: () => import('../views/Create.vue')
+    },
+    {
       path: '*',
       redirect: '/'
     }
