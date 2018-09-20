@@ -107,6 +107,8 @@ const verbs = {
     ],
     search: '',
     filter: '',
+    loading: false,
+    redirect: false,
     watchedVideos: [
       {id: 1, link: 'https://www.youtube.com/watch?v=bUC_IwIEi68', 
         title: 'Noticias Telemundo, 15 de septiembre de 2018 | Noticiero | Telemundo', 
@@ -129,7 +131,13 @@ const verbs = {
       } else {
         state.filter = filter;
       }
-    }
+    },
+    redirect(state, bool) {
+      state.redirect = bool;
+    },
+    loading(state, bool) {
+      state.loading = bool;
+    },
   },
   actions: {
     setFilter({commit}, filter) {
@@ -138,7 +146,13 @@ const verbs = {
     async submit({commit}, data) {
       const result = await axios.post('http://localhost:1337/verb', data);
       console.log(result)
-    }
+    },
+    redirect({commit}, {redirectBool}) {
+      commit('redirect', redirectBool);
+    },
+    loading({commit}, {loadingBool}) {
+      commit('loading', loadingBool);
+    },
   },
   getters: {
     verbs: state => {
